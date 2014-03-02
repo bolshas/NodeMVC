@@ -1,22 +1,30 @@
-var ejs = require('ejs')
-
 module.exports = {
-    index: function() {
+    index: function(data, callback) {
 		var self = this
-		User.findByName('Andrius', function(error, user) {
-            if(error)
-                self.router.render(error)
-            self.view.user = user
+		User.findAll(function(error, users) {
+            self.view.users = users
+            return callback(error)
 		})
     },
     
-    add: function() {
+    add: function(data, callback) {
 		var self = this
 		self.render = false
-        User.add({name: 'Andrius', email : 'bolshas@gmail.com'}, function(error){
-            if(error)
-                self.router.render(error)
-            self.router.render('' + JSON.stringify(self.router.session))
+        User.add({name: 'Andrius', email : 'bolshas@gmail.com'}, function(error) {
+            return callback(error, self.router.redirect('/users'))
         })
+    },
+    
+    delete: function(data, callback) {
+        var self = this
+        self.render = false
+        User.delete({name: 'Andrius'}, function(error) { 
+            return callback(error, self.router.redirect('/users'))
+        })
+    },
+    
+    view: function(data) {
+		var self = this
+		self.view.test = data
     }
 }

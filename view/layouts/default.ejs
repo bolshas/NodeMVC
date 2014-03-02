@@ -18,6 +18,9 @@
                     <li><a href="#">Help</a></li>
                 </ul>
             </nav>
+            <% if (errors) { %>
+            <%-: errors | map:'stack'| join:'<br>' %>
+            <% } %>
             <% include content %>
         </div>
     </body>

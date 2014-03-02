@@ -123,4 +123,5 @@ p {
   font-size: 14px;
   color: #464646;
   line-height: 150%;
+  word-wrap: break-word;
 }
