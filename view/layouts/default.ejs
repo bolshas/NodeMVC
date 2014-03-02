@@ -18,9 +18,10 @@
                     <li><a href="#">Help</a></li>
                 </ul>
             </nav>
-            <% if (errors) { %>
-            <%-: errors | map:'stack'| join:'<br>' %>
-            <% } %>
+            
+            <% include ./view/partials/errors %>
+            <% include ./view/partials/messages %>
+            
             <% include content %>
         </div>
     </body>

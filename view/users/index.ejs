@@ -13,7 +13,7 @@
     </div>
     <% users.forEach(function(user) { %>
         <pre>
-            <%- JSON.stringify(user, null, '\t') %>
+            <%= JSON.stringify(user, null, '    ') %>
         </pre>   
     <% }) %>
 </div>

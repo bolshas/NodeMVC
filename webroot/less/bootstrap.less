@@ -1,8 +1,8 @@
-@mainColor: #f7b900;
-@mainColor: #e27100;
-@mainColor: #ff1f00;
-@mainColor: #578637;
-@mainColor: #2e7ecf;
+@themeYellow: #f7b900;
+@themeOrange: #e27100;
+@themeRed: #ff1f00;
+@themeGreen: #578637;
+@themeBlue: #2e7ecf;
 @white: #fff;
 @black: #000;
 
@@ -101,18 +101,18 @@ button {
     line-height:auto;
     color: white;
     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-    border: 1px solid @mainColor;
+    border: 1px solid @themeBlue;
     border-radius: 3px;
     outline: 0;
-    box-shadow: 0 1px 0 0 @mainColor + 80 inset, 0 0 3px 0 rgba(0, 0, 0, 0.4);
-    background: linear-gradient(@mainColor + 60, @mainColor);
+    box-shadow: 0 1px 0 0 @themeBlue + 80 inset, 0 0 3px 0 rgba(0, 0, 0, 0.4);
+    background: linear-gradient(@themeBlue + 60, @themeBlue);
 }
 button:hover {
     cursor: pointer;
-    background: linear-gradient(@mainColor + 70, @mainColor + 10);
+    background: linear-gradient(@themeBlue + 70, @themeBlue + 10);
 }
 button:active {
-    background: linear-gradient(@mainColor + 50, @mainColor);
+    background: linear-gradient(@themeBlue + 50, @themeBlue);
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4);
 }
 input[type=text] {
