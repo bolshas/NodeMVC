@@ -1,14 +1,16 @@
-<% if (errors.length > 0) { %>
+<% if (typeof(errors) === 'object' && errors.length > 0) { %>
     <p><b>The following errors have occured</b></p> 
     <% errors.forEach(function(error) { %>
         <p>
-        <% Object.getOwnPropertyNames(error).forEach(function(property) {%>
-            <% if (error[property]) { %>
-                <b><%= property%>:</b>
-                <%= error[property] %>
-                <br>
-            <% } %>
-        <% }) %>
+        <% if (typeof(error) === 'object') { %>
+            <% Object.getOwnPropertyNames(error).forEach(function(property) { %>
+                <% if (error[property]) { %>
+                    <b><%= property%>:</b>
+                    <%= error[property] %>
+                    <br>
+                <% } %>
+            <% }) %>
+        <% } %>
         </p>
     <% }) %>
 <% } %>

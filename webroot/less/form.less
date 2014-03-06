@@ -1,0 +1,92 @@
+.form-container {
+    background-color: rgba(255,255,255,0.5);
+    padding: 10px;
+    border-radius: 3px;
+}
+
+button {
+    font-family:'Exo 2', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0 10px;
+    height: 40px;
+    line-height:auto;
+    color: white;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    border: 1px solid @themeBlue;
+    .border-radius(3px);
+    outline: 0;
+    .box-shadow("0 1px 0 0 @themeBlue + 80 inset, 0 0 3px 0 rgba(0, 0, 0, 0.4)");
+    background: linear-gradient(@themeBlue + 60, @themeBlue);
+    &:hover {
+        cursor: pointer;
+        background: linear-gradient(@themeBlue + 70, @themeBlue + 10);
+    }
+    &:active {
+        background: linear-gradient(@themeBlue + 50, @themeBlue);
+        .box-shadow("0 0 3px 0 rgba(0, 0, 0, 0.4)");
+    }
+}
+
+input[type=text] {
+    .border-radius(3px);
+    border: 1px solid @white - 100;
+    outline: 0;
+    background: @white - 15;
+    font-family:'Exo 2', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 0 10px;
+    height: 40px;
+    line-height:auto;
+    color: @black + 70;
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 0 3px 0 rgba(0, 0, 0, 0.3) inset;
+    &:focus {
+        background: @white;
+        border: 1px solid @black + 100;
+    }
+    &:hover {
+    border: 1px solid @black + 130;
+    }
+}
+
+input[type=checkbox] {
+    opacity: 0;
+    &+ label {
+    	display: inline-block;
+    	position: relative;
+    	cursor: pointer; 
+    	font-family:'Exo 2', sans-serif;
+    	font-weight: 400;
+        font-size: 14px;
+    	color: @black + 70;
+    	.untouchable;
+    }
+    &+ label:after {
+        position: absolute; top: 0; left: -20px;
+        border: 1px solid @white - 100;
+        .border-radius(3px);
+        outline: 0;
+        background: @white - 5;
+        box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 0 3px 0 rgba(0, 0, 0, 0.3) inset;
+        font-family: 'Glyphicons Halflings';
+        font-size: 12px;
+        width: 14px; height: 8px;
+        padding-left: 1px; padding-top: 7px;
+        display: inline-block;
+        content: '';
+        color: @themeGreen;
+        line-height: 0; 
+    }
+    
+    &:hover + label:after {
+        border-color: @black + 130;
+    }
+    &:focus + label:after {
+        background: @white;
+        border-color: @black + 100;
+    }
+    &:checked + label:after {
+        content: '\e013';
+    }
+}
