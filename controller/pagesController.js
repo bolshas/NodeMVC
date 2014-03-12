@@ -1,5 +1,6 @@
 module.exports = {
-    index : function() {
-        
+    index : function(data, callback) {
+        var error = new Error('labas')
+        return(callback())
     }
 }

@@ -1,0 +1,29 @@
+doctype html
+html
+    head
+        link(rel='stylesheet' type='text/css' href='/css/style.css')
+        link(rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Exo+2:400,600,700italic&subset=latin,latin-ext')
+        link(rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono')
+        script(src='/script/jquery.js')
+        title labas
+    body
+        div(class='container')
+            nav
+                ul
+                    li: a(href='#') Link 1
+                    li
+                        a(href='#') Link 2
+                        ul
+                            li: a(href='#') Link 2.1
+                            li
+                                a(href='#') Link 2.2
+                                ul
+                                    li: a(href='#') Link 2.2.1
+                                    li: a(href='#') Link 2.2.2
+                                    li: a(href='#') Link 2.2.3
+                            li: a(href='#') Link 2.3
+                    li: a(href='#') Link 3
+                    li: a(href='#') Link 4
+                    li: a(href='#') Link 5
+            block title
+            block content 

@@ -4,10 +4,13 @@ nav {
 	float: left;
 	ul {
 		margin: 0; padding: 0;
-		background-color: @black + 160;
+		background-color: @black + 130;
 		background: linear-gradient(@black + 160 0%, @black + 130 50%, @black + 130 51%, @black + 140 100%);
+		@start: @black + 160;
+		@end: @black + 140;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@start, endColorstr=@end);
 		box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4), 0 0 1px 0 rgba(255, 255, 255, 0.3) inset;
-		border: 1px solid @black + 110; border-radius: 3px;
+		border: 1px solid @black + 110; .border-radius(3px);
 		float: left;
 		li {
 			position: relative;
@@ -22,18 +25,20 @@ nav {
 	        &:hover > ul  { opacity: 1; visibility: visible;}
 			a {
 				font-family:'Exo 2', sans-serif;
+                font-weight: 700;
                 text-decoration: none;
                 text-shadow: 0 1px rgba(0, 0, 0, 0.5);
                 color: @white - 20;
 				display: block;
-				padding: 10px 0; 
+				padding: 10px 0;
+				&:hover { text-decoration: none; }
 			}
 			ul {
 				width: 100%;
 				display: block; 
-				opacity: 0; visibility: hidden; transition: visibility 1s, opacity 0.25s;
+				opacity: 0; visibility: hidden; transition: opacity 0.1s ease;
 				position: absolute; top: 100%; left: -1px;
-				border-radius: 0 0 3px 3px;
+				border-radius: 0 0 3px 3px; border-color: @black + 40;
 				li {
 					width: 100%;
 					position: relative;
@@ -41,12 +46,12 @@ nav {
 					background-color: @black + 50;
 					border-style: solid;
 					border-width: 1px 0 1px 0;
-					border-color: rgba(255, 255, 255, 0.2) transparent rgba(0, 0, 0, 0.2) transparent;
+					border-color: rgba(255, 255, 255, 0.1) transparent rgba(0, 0, 0, 0.1) transparent;
 					text-align: left;
 					&:first-child { border-width: 1px 0 1px 0; }
 			        &:last-child  { border-width: 1px 0 0 0; }
 			        &:hover       { background-color: @black + 40; }
-					a { padding-left: 10px; }
+					a { font-weight: 400; padding-left: 10px; }
 					ul {
 						width: 100%;
 						position: absolute;	top: -2px; left: 100%;

@@ -1,21 +1,42 @@
+<script src="/script/users/actions.js"></script>
+
 <h1>This is a Title</h1>
 
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-    <p><a href="/users/add">Add</a></p>
-    <p><a href="/users/delete">Delete</a></p>
-    <div class="form-container">
-        <form>
-            <button>Grumpy</button>
-            <input type="text">
-            <input type="text">
-            <input type="checkbox" id="c1">
-            <label for="c1">Checkbox</label>
-
-        </form>
-    </div>
-    <% users.forEach(function(user) { %>
-        <pre>
-            <%= JSON.stringify(user, null, '    ') %>
-        </pre>   
-    <% }) %>
+<p>
+	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+	when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+</p>
+<p><a href="#" id="add">Add</a></p>
+<p><a href="#" id="delete">Delete</a></p>
+<div class="form-container">
+    <form name="add_user" method="post" action="/users/add">
+        <label for="form_name">Name</label><input type="text" name="name" id="form_name">
+        <br>
+        <label for="form_email">Email</label><input type="text" name="email" id="form_email">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
 </div>
+
+<% var properties = Object.getOwnPropertyNames(users[0]) %>
+
+<table>
+	<thead>
+    	<tr>
+	    <% properties.forEach(function(property) { %>
+	    	<th><%= property %></th>
+		<% }) %>
+		<th>actions</th>
+		</tr>
+	</thead>
+	<tbody>
+    	<% users.forEach(function(user) { %>
+    		<tr>
+	    		 <% properties.forEach(function(property) { %>
+	    			<td><%= user[property] %></td>
+			 	 <% }) %>
+			 	 <td><%= link_to('hello world', '/something/here') %></td>
+    		</tr>
+    	<% }) %>
+	</tbody>
+</table>

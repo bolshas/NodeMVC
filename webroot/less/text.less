@@ -1,15 +1,45 @@
 h1 {
-    font-family:'Exo 2', sans-serif;
+    font-family:@mainText;
     font-weight: 600;
     color: @black + 100;
     text-shadow: 0 1px 0 @white - 10;
 }
 
 p {
-    font-family:'Exo 2', sans-serif;
+    font-family:@mainText;
     font-weight: 400;
     font-size: 14px;
     color: @black + 70;
     line-height: 150%;
     word-wrap: break-word;
+}
+
+a {
+    font-family: @mainText;
+    text-decoration: none;
+    color: @themeBlue;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+pre {
+    font-family: @monoText;
+    font-size: 12px;
+    border: 1px solid @black + 150;
+    padding: 10px;
+    white-space: pre-wrap;
+    width: @screenWidth - 50px;
+    background: white;
+}
+
+.logo {
+    font-family: @mainText;
+    font-weight: 700;
+    font-size: 40px;
+    font-style: italic;
+    color: @white - 5;
+    text-shadow: 0 3px rgba(0, 0, 0, 0.4);
+    padding: 0;
+    margin: 0;
 }

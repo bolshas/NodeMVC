@@ -1,0 +1,39 @@
+extends layouts/default
+
+block title
+    h1 This is a Title
+    p: b= message.text
+block messages
+
+block content
+    script src="/script/users/actions.js
+    p.
+        Šaly dienadaržio durų, ant didžiulės spalių krūvos, guli senas Brisius - žilas, apžabalęs. Matyti jisai dar mato, bet tik kaip per dūmus, ir savo 
+        labai dažnai nebepažįsta. Sunki senatvė ir jam: visų užmirštas, apleistas. Patsai gerai jaučia, kad mažai kam bereikalingas. Bet kiek galėdamas rūpinas 
+        dar būti naudingas. Nors nebeprigirdi, o sunkios blakstienos amžinai merkia jo traškanotas akis, tačiau vaiko nuo savęs snaudulį ir klausos. Beklausydamas 
+        apsnūsta... Ir girdi per miegą: šlama netoli, tartum eina kas svetimas... Sunkiai keliasi senas Brisius iš guolio ir loja užkimusiu, mieguistu balsu.
+    
+    div(class='form-container')
+        form(name='add_user' method='post' action='/users/add')
+            label(for='form_name') Name
+            input(type='text' name='name' id='form_name')
+            br
+            label(for='form_email') Email
+            input(type='text' name='email' id='form_email')
+            br
+            input(type='submit' value='Submit')
+    
+        if users.length > 0
+            - var properties = Object.getOwnPropertyNames(users[0])
+            table
+                thead
+                    tr
+                        each property in properties
+                            th= property
+                        th action
+                tbody
+                    each user in users
+                        tr
+                            each property in properties
+                                td= user[property]
+                            td: a(href='/users/delete/' + user['rowid']) delete

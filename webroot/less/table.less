@@ -1,0 +1,39 @@
+table {
+	margin: 20px auto; padding: 0;
+	font-family: @mainText; font-size: 14px;
+	border-spacing: 0;
+	width: 100%;
+	thead tr {
+		border: 1px solid @black + 110; border-radius: 5px 5px 0 0;
+		text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+        color: @white;
+        font-weight: 700;
+        th {
+        	background: linear-gradient(@black + 160 0%, @black + 130 50%, @black + 130 51%, @black + 140 100%);
+			@start: @black + 160;
+			@end: @black + 140;
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@start, endColorstr=@end);
+		
+			box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+			border-style: solid; border-width: 0 1px 0 1px; border-color: transparent rgba(0, 0, 0, 0.2) transparent rgba(255, 255, 255, 0.2);
+			
+        	&:first-child { border-left: 0; border-radius: 5px 0 0 0; }
+        	&:last-child { border-right: 0; border-radius: 0 5px 0 0; }
+        }
+	}
+	tbody tr {
+		td {
+		}
+ 		&:nth-child(odd) { 
+        	background: @white;
+        	// &:hover { background: @themeBlue + 220;  }
+		}
+	    &:nth-child(even) { 
+	        background: lighten(@themeBlue, 45%);
+	        // &:hover { background: @themeBlue + 240 }
+	    }
+	}
+	td, th {
+		padding: 5px 10px; 
+	}
+}

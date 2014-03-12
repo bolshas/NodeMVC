@@ -2,6 +2,11 @@ var App = require('./lib/app')
 var app = new App()
 app.start()
 
+process.on('uncaughtException', function(error) {
+    console.log(error.stack)
+})
+
+
 var stdin = process.stdin
 
 stdin.setRawMode(true)

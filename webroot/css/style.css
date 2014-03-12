@@ -14,11 +14,14 @@ nav {
 nav ul {
   margin: 0;
   padding: 0;
-  background-color: #a0a0a0;
+  background-color: #828282;
   background: linear-gradient(#a0a0a0 0%, #828282 50%, #828282 51%, #8c8c8c 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#a0a0a0, endColorstr=#8c8c8c);
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.4), 0 0 1px 0 rgba(255, 255, 255, 0.3) inset;
   border: 1px solid #6e6e6e;
   border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
   float: left;
 }
 nav ul li {
@@ -46,22 +49,27 @@ nav ul li:hover > ul {
 }
 nav ul li a {
   font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
   text-decoration: none;
   text-shadow: 0 1px rgba(0, 0, 0, 0.5);
   color: #ebebeb;
   display: block;
   padding: 10px 0;
 }
+nav ul li a:hover {
+  text-decoration: none;
+}
 nav ul li ul {
   width: 100%;
   display: block;
   opacity: 0;
   visibility: hidden;
-  transition: visibility 1s, opacity 0.25s;
+  transition: opacity 0.1s ease;
   position: absolute;
   top: 100%;
   left: -1px;
   border-radius: 0 0 3px 3px;
+  border-color: #282828;
 }
 nav ul li ul li {
   width: 100%;
@@ -70,7 +78,7 @@ nav ul li ul li {
   background-color: #323232;
   border-style: solid;
   border-width: 1px 0 1px 0;
-  border-color: rgba(255, 255, 255, 0.2) transparent rgba(0, 0, 0, 0.2) transparent;
+  border-color: rgba(255, 255, 255, 0.1) transparent rgba(0, 0, 0, 0.1) transparent;
   text-align: left;
 }
 nav ul li ul li:first-child {
@@ -83,6 +91,7 @@ nav ul li ul li:hover {
   background-color: #282828;
 }
 nav ul li ul li a {
+  font-weight: 400;
   padding-left: 10px;
 }
 nav ul li ul li ul {
@@ -102,7 +111,17 @@ nav ul li ul li ul {
   padding: 10px;
   border-radius: 3px;
 }
-button {
+label {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 42px;
+  width: 100px;
+  display: block;
+  float: left;
+}
+input[type=button],
+input[type=submit] {
   font-family: 'Exo 2', sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -119,13 +138,18 @@ button {
   -webkit-box-shadow: "0 1px 0 0 @themeBlue + 80 inset, 0 0 3px 0 rgba(0, 0, 0, 0.4)";
   -moz-box-shadow: "0 1px 0 0 @themeBlue + 80 inset, 0 0 3px 0 rgba(0, 0, 0, 0.4)";
   box-shadow: "0 1px 0 0 @themeBlue + 80 inset, 0 0 3px 0 rgba(0, 0, 0, 0.4)";
+  background-color: #2e7ecf;
   background: linear-gradient(#6abaff, #2e7ecf);
 }
-button:hover {
+input[type=button]:hover,
+input[type=submit]:hover {
   cursor: pointer;
+  background-color: #3888d9;
   background: linear-gradient(#74c4ff, #3888d9);
 }
-button:active {
+input[type=button]:active,
+input[type=submit]:active {
+  background-color: #2e7ecf;
   background: linear-gradient(#60b0ff, #2e7ecf);
   -webkit-box-shadow: "0 0 3px 0 rgba(0, 0, 0, 0.4)";
   -moz-box-shadow: "0 0 3px 0 rgba(0, 0, 0, 0.4)";
@@ -218,6 +242,33 @@ p {
   line-height: 150%;
   word-wrap: break-word;
 }
+a {
+  font-family: 'Exo 2', sans-serif;
+  text-decoration: none;
+  color: #2e7ecf;
+}
+a:hover {
+  text-decoration: underline;
+}
+pre {
+  font-family: 'Droid Sans Mono', sans-serif;
+  font-size: 12px;
+  border: 1px solid #969696;
+  padding: 10px;
+  white-space: pre-wrap;
+  width: 750px;
+  background: white;
+}
+.logo {
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  font-style: italic;
+  color: #fafafa;
+  text-shadow: 0 3px rgba(0, 0, 0, 0.4);
+  padding: 0;
+  margin: 0;
+}
 body {
   background-color: #ccc;
   margin: 0;
@@ -234,13 +285,44 @@ body {
   border-width: 15px;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
 }
-.logo {
-  font-family: 'Exo 2', sans-serif;
-  font-weight: 700;
-  font-size: 40px;
-  font-style: italic;
-  color: #fafafa;
-  text-shadow: 0 3px rgba(0, 0, 0, 0.4);
+table {
+  margin: 20px auto;
   padding: 0;
-  margin: 0;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 14px;
+  border-spacing: 0;
+  width: 100%;
+}
+table thead tr {
+  border: 1px solid #6e6e6e;
+  border-radius: 5px 5px 0 0;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  font-weight: 700;
+}
+table thead tr th {
+  background: linear-gradient(#a0a0a0 0%, #828282 50%, #828282 51%, #8c8c8c 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#a0a0a0, endColorstr=#8c8c8c);
+  box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+  border-style: solid;
+  border-width: 0 1px 0 1px;
+  border-color: transparent rgba(0, 0, 0, 0.2) transparent rgba(255, 255, 255, 0.2);
+}
+table thead tr th:first-child {
+  border-left: 0;
+  border-radius: 5px 0 0 0;
+}
+table thead tr th:last-child {
+  border-right: 0;
+  border-radius: 0 5px 0 0;
+}
+table tbody tr:nth-child(odd) {
+  background: #ffffff;
+}
+table tbody tr:nth-child(even) {
+  background: #e8f1fa;
+}
+table td,
+table th {
+  padding: 5px 10px;
 }

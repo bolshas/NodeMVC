@@ -4,8 +4,18 @@
     border-radius: 3px;
 }
 
-button {
-    font-family:'Exo 2', sans-serif;
+label {
+    font-family: @mainText;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 42px;
+    width: 100px;
+    display: block;
+    float: left;
+}
+
+input[type=button], input[type=submit] {
+    font-family: @mainText;
     font-weight: 600;
     font-size: 14px;
     padding: 0 10px;
@@ -17,12 +27,15 @@ button {
     .border-radius(3px);
     outline: 0;
     .box-shadow("0 1px 0 0 @themeBlue + 80 inset, 0 0 3px 0 rgba(0, 0, 0, 0.4)");
+    background-color: @themeBlue;
     background: linear-gradient(@themeBlue + 60, @themeBlue);
     &:hover {
         cursor: pointer;
+        background-color: @themeBlue + 10;
         background: linear-gradient(@themeBlue + 70, @themeBlue + 10);
     }
     &:active {
+    	background-color: @themeBlue;
         background: linear-gradient(@themeBlue + 50, @themeBlue);
         .box-shadow("0 0 3px 0 rgba(0, 0, 0, 0.4)");
     }
@@ -33,7 +46,7 @@ input[type=text] {
     border: 1px solid @white - 100;
     outline: 0;
     background: @white - 15;
-    font-family:'Exo 2', sans-serif;
+    font-family: @mainText;
     font-weight: 400;
     font-size: 14px;
     padding: 0 10px;
@@ -56,7 +69,7 @@ input[type=checkbox] {
     	display: inline-block;
     	position: relative;
     	cursor: pointer; 
-    	font-family:'Exo 2', sans-serif;
+    	font-family: @mainText;
     	font-weight: 400;
         font-size: 14px;
     	color: @black + 70;

@@ -1,16 +1,17 @@
 <% if (typeof(errors) === 'object' && errors.length > 0) { %>
     <p><b>The following errors have occured</b></p> 
     <% errors.forEach(function(error) { %>
-        <p>
         <% if (typeof(error) === 'object') { %>
             <% Object.getOwnPropertyNames(error).forEach(function(property) { %>
                 <% if (error[property]) { %>
-                    <b><%= property%>:</b>
-                    <%= error[property] %>
-                    <br>
+                    <% if (property === 'stack') { %>
+                    	<p><b><%= property%>:</b><pre><%= error[property] %></pre></p>
+                    <% } %>
+                    <% if (property !== 'stack') { %>
+						<p><b><%= property%>:</b><pre><%- error[property] %></pre></p>                    	
+                    <% } %>
                 <% } %>
             <% }) %>
         <% } %>
-        </p>
     <% }) %>
 <% } %>
