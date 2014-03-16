@@ -3,7 +3,7 @@ html
     head
         link(rel='stylesheet' type='text/css' href='/css/style.css')
         link(rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Exo+2:400,600,700italic&subset=latin,latin-ext')
-        link(rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono')
+        link(rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700')
         script(src='/script/jquery.js')
         title labas
     body
@@ -25,5 +25,26 @@ html
                     li: a(href='#') Link 3
                     li: a(href='#') Link 4
                     li: a(href='#') Link 5
+            
             block title
+            
+            p: b= message.text
+            
+            if errors.length > 0
+                h2 The following errors have occured:
+                pre
+                    - var i = 0
+                    each error in errors
+                        - i++
+                        b= 'error #' + i
+                        - var properties = Object.getOwnPropertyNames(error)
+                        br
+                        br
+                        each property in properties
+                            if error[property] !== undefined
+                                strong= property
+                                br
+                                = error[property]
+                                br
+            
             block content 

@@ -106,6 +106,27 @@ nav ul li ul li ul {
   src: url('../fonts/glyphicons-halflings-regular.eot');
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
+table input[type=text] {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+table input[type=text]:focus {
+  background: none;
+  border: 0;
+}
+table input[type=text]:hover {
+  border: 0;
+}
+table input[type=submit] {
+  height: auto;
+}
 .form-container {
   background-color: rgba(255, 255, 255, 0.5);
   padding: 10px;
@@ -228,11 +249,15 @@ input[type=checkbox]:focus + label:after {
 input[type=checkbox]:checked + label:after {
   content: '\e013';
 }
-h1 {
+h1,
+h2 {
   font-family: 'Exo 2', sans-serif;
   font-weight: 600;
   color: #646464;
   text-shadow: 0 1px 0 #f5f5f5;
+}
+h2 {
+  font-size: 16px;
 }
 p {
   font-family: 'Exo 2', sans-serif;
@@ -251,7 +276,7 @@ a:hover {
   text-decoration: underline;
 }
 pre {
-  font-family: 'Droid Sans Mono', sans-serif;
+  font-family: 'Ubuntu Mono', sans-serif;
   font-size: 12px;
   border: 1px solid #969696;
   padding: 10px;

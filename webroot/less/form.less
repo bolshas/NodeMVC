@@ -1,3 +1,27 @@
+table {
+    input[type=text] {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: none;
+        box-shadow: none;
+        box-sizing: border-box;
+        &:focus {
+            background: none;
+            border: 0;
+        }
+        &:hover {
+            border: 0;
+        }    
+    }
+    input[type=submit] {
+        height: auto;
+    }
+}
+
 .form-container {
     background-color: rgba(255,255,255,0.5);
     padding: 10px;

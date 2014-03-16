@@ -1,39 +1,56 @@
 extends layouts/default
 
 block title
-    h1 This is a Title
-    p: b= message.text
-block messages
+    h1 Users
 
 block content
-    script src="/script/users/actions.js
-    p.
-        Šaly dienadaržio durų, ant didžiulės spalių krūvos, guli senas Brisius - žilas, apžabalęs. Matyti jisai dar mato, bet tik kaip per dūmus, ir savo 
-        labai dažnai nebepažįsta. Sunki senatvė ir jam: visų užmirštas, apleistas. Patsai gerai jaučia, kad mažai kam bereikalingas. Bet kiek galėdamas rūpinas 
-        dar būti naudingas. Nors nebeprigirdi, o sunkios blakstienos amžinai merkia jo traškanotas akis, tačiau vaiko nuo savęs snaudulį ir klausos. Beklausydamas 
-        apsnūsta... Ir girdi per miegą: šlama netoli, tartum eina kas svetimas... Sunkiai keliasi senas Brisius iš guolio ir loja užkimusiu, mieguistu balsu.
-    
-    div(class='form-container')
-        form(name='add_user' method='post' action='/users/add')
-            label(for='form_name') Name
-            input(type='text' name='name' id='form_name')
-            br
-            label(for='form_email') Email
-            input(type='text' name='email' id='form_email')
-            br
-            input(type='submit' value='Submit')
-    
-        if users.length > 0
-            - var properties = Object.getOwnPropertyNames(users[0])
-            table
-                thead
-                    tr
-                        each property in properties
-                            th= property
-                        th action
-                tbody
-                    each user in users
-                        tr
-                            each property in properties
-                                td= user[property]
-                            td: a(href='/users/delete/' + user['rowid']) delete
+    script(src='/script/users/actions.js')
+
+    h2 Table data
+    table
+        thead
+            tr
+                each property in attributes
+                    th= property['name']
+                th action
+        tbody
+            each user in users
+                tr
+                    -for(var property in user)
+                        td= user[property]
+                    td: a(href='/users/delete/' + user['id']) delete
+            tr: form(name='add_user' method='post' action='/users/add')
+                each property in attributes
+                    td: input(type='text' name=property['name'])
+                td: input(type='submit' value='add')
+            
+    h2 Table information
+    table
+        thead
+            tr
+                -for (var property in attributes[0])
+                    th= property
+                th action
+        tbody
+            each attribute in attributes
+                tr
+                    each property in attribute
+                        td= property
+                    td: a(href='/users/deleteColumn/' + attribute['cid']) delete
+            tr: form(name='add_column' method='post' action='/users/addColumn')
+                td
+                td: input(type='text' name='name')
+                td: select(name='type')
+                        option(value='NULL') NULL
+                        option(value='INTEGER') INTEGER
+                        option(value='REAL') REAL
+                        option(value='TEXT') TEXT
+                        option(value='BLOB') BLOB
+                td: select(name='notnull')
+                        option(value='0') 0
+                        option(value='1') 1
+                td: input(type='text' name='dflt_value')
+                td: select(name='pk')
+                        option(value='0') 0
+                        option(value='1') 1
+                td: input(type='submit' value='add')
