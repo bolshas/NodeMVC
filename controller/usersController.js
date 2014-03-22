@@ -20,6 +20,7 @@ module.exports = {
 		var error
 		if (self.router.request.method === 'POST') {
             var user = self.router.request.postArgs
+            console.log(user)
             if (user.name !== '' && user.email !== '') { // TODO: move validation to model
                  User.add(user, function(error) {
                     if (error)
@@ -62,7 +63,23 @@ module.exports = {
         self.render = false
         if (self.router.request.method === 'POST') {
             var column = self.router.request.postArgs
+            console.log(column)
             User.addColumn(column, function(error){
+                return callback(error, function(){ self.router.redirect('/users') })
+            })
+        }
+        else
+            return callback(error, function() { self.router.redirect('/users') })
+    },
+    
+    modifyColumn: function(data, callback) {
+        var self = this
+        var error
+        self.render = false
+        if (self.router.request.method === 'POST') {
+            var column  = self.router.request.postArgs
+            console.log(column)
+            User.modifyColumn(column, function(error){
                 return callback(error, function(){ self.router.redirect('/users') })
             })
         }

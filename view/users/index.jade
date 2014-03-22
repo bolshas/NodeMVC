@@ -6,51 +6,84 @@ block title
 block content
     script(src='/script/users/actions.js')
 
-    h2 Table data
-    table
-        thead
-            tr
-                each property in attributes
-                    th= property['name']
-                th action
-        tbody
-            each user in users
+    if users
+        h2 Table data
+        
+        form(name='add_user' method='post' action='/users/add')
+            table
+                thead
+                    tr
+                        each attribute in attributes
+                            th= attribute['name']
+                        th action
+                tbody
+                    each user in users
+                        tr
+                            -for (var property in user)
+                                if property === 'id'
+                                    td
+                                        = user[property]
+                                        input(type="hidden" name=property value=user[property])
+                                else
+                                    td: input(type="text" name=property value=user[property])
+                            td
+                                a(href='/users/delete/' + user['id']) delete
+                                | 
+                                a(href='#' class='modifyUser') modify
+                    tr
+                        each attribute in attributes
+                            if attribute['name'] === 'id'
+                                td
+                            else
+                                td: input(type='text' name=attribute['name'])
+                        td: input(type='submit' value='add')
+                    
+        h2 Table information
+        
+        form(name='modifyColumn' id='modifyColumn' method='post' action='/users/modifyColumn' style='display:none')
+        form(name='addColumn' id='addColumn' method='post' action='/users/addColumn' style='display:none')
+        table
+            thead
                 tr
-                    -for(var property in user)
-                        td= user[property]
-                    td: a(href='/users/delete/' + user['id']) delete
-            tr: form(name='add_user' method='post' action='/users/add')
-                each property in attributes
-                    td: input(type='text' name=property['name'])
-                td: input(type='submit' value='add')
-            
-    h2 Table information
-    table
-        thead
-            tr
-                -for (var property in attributes[0])
-                    th= property
-                th action
-        tbody
-            each attribute in attributes
+                    -for (var property in attributes[0])
+                        th= property
+                    th action
+            tbody
+                each attribute in attributes
+                    tr
+                        -for (var property in attribute)
+                            td
+                                case property
+                                    when 'cid'
+                                        =attribute[property]
+                                        input(type="hidden" name=property value=attribute[property])
+                                    when 'type'
+                                        select(name='type')
+                                            each type in ['INTEGER', 'REAL', 'TEXT', 'BLOB']
+                                                option(value=type selected=type === attribute[property])=type
+                                    when 'notnull'
+                                        select(name='notnull')
+                                            each type in [0, 1]
+                                                option(value=type selected=attribute[property] === type)=type
+                                    when 'pk'
+                                        input(type='radio' name='pk' value=1 checked=attribute[property] === 1)
+                                    default
+                                        input(type='text' name=property value=attribute[property])
+                        td
+                            a(href='/users/deleteColumn/' + attribute['cid']) delete
+                            | 
+                            a(href='#' class='modifyColumn') modify
                 tr
-                    each property in attribute
-                        td= property
-                    td: a(href='/users/deleteColumn/' + attribute['cid']) delete
-            tr: form(name='add_column' method='post' action='/users/addColumn')
-                td
-                td: input(type='text' name='name')
-                td: select(name='type')
-                        option(value='NULL') NULL
-                        option(value='INTEGER') INTEGER
-                        option(value='REAL') REAL
-                        option(value='TEXT') TEXT
-                        option(value='BLOB') BLOB
-                td: select(name='notnull')
-                        option(value='0') 0
-                        option(value='1') 1
-                td: input(type='text' name='dflt_value')
-                td: select(name='pk')
-                        option(value='0') 0
-                        option(value='1') 1
-                td: input(type='submit' value='add')
+                    td
+                    td: input(type='text' name='name')
+                    td: select(name='type')
+                            option(value='INTEGER') INTEGER
+                            option(value='REAL') REAL
+                            option(value='TEXT') TEXT
+                            option(value='BLOB') BLOB
+                    td: select(name='notnull')
+                            option(value='0') 0
+                            option(value='1') 1
+                    td: input(type='text' name='dflt_value')
+                    td: input(type='radio' name='pk' value=1)
+                    td: a(href='#' class='addColumn') add
