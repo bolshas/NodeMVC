@@ -9,70 +9,72 @@ block content
     if users
         h2 Table data
         
-        form(name='add_user' method='post' action='/users/add')
-            table
-                thead
+        table
+            thead
+                tr
+                    each attribute in attributes
+                        th= attribute['name']
+                    th action
+            tbody
+                each user in users
                     tr
-                        each attribute in attributes
-                            th= attribute['name']
-                        th action
-                tbody
-                    each user in users
-                        tr
-                            -for (var property in user)
-                                if property === 'id'
-                                    td
-                                        = user[property]
-                                        input(type="hidden" name=property value=user[property])
-                                else
-                                    td: input(type="text" name=property value=user[property])
-                            td
-                                a(href='/users/delete/' + user['id']) delete
-                                | 
-                                a(href='#' class='modifyUser') modify
-                    tr
-                        each attribute in attributes
-                            if attribute['name'] === 'id'
+                        -for (var property in user)
+                            if property === 'id'
                                 td
+                                    = user[property]
+                                    input(type="hidden" name=property value=user[property])
                             else
-                                td: input(type='text' name=attribute['name'])
-                        td: input(type='submit' value='add')
-                    
+                                td: input(type="text" name=property value=user[property])
+                        td
+                            a(href='/users/delete/' + user['id']) delete
+                            | 
+                            a(href='#' data-action='/users/modify') modify
+                tr
+                    each attribute in attributes
+                        if attribute['name'] === 'id'
+                            td
+                        else
+                            td: input(type='text' name=attribute['name'])
+                    td: a(href='#' data-action='/users/add') add
+                
         h2 Table information
         
-        form(name='modifyColumn' id='modifyColumn' method='post' action='/users/modifyColumn' style='display:none')
-        form(name='addColumn' id='addColumn' method='post' action='/users/addColumn' style='display:none')
         table
             thead
                 tr
                     -for (var property in attributes[0])
                         th= property
-                    th action
+                    th indexed
+                    th unique
+                    th actions
             tbody
                 each attribute in attributes
                     tr
-                        -for (var property in attribute)
-                            td
-                                case property
-                                    when 'cid'
-                                        =attribute[property]
-                                        input(type="hidden" name=property value=attribute[property])
-                                    when 'type'
-                                        select(name='type')
-                                            each type in ['INTEGER', 'REAL', 'TEXT', 'BLOB']
-                                                option(value=type selected=type === attribute[property])=type
-                                    when 'notnull'
-                                        select(name='notnull')
-                                            each type in [0, 1]
-                                                option(value=type selected=attribute[property] === type)=type
-                                    when 'pk'
-                                        input(type='radio' name='pk' value=1 checked=attribute[property] === 1)
-                                    default
-                                        input(type='text' name=property value=attribute[property])
+                        td
+                            =attribute.cid
+                            input(type='hidden' name='cid' value=attribute.cid)
+                        td
+                            input(type='text' name='name' value=attribute.name)
+                        td
+                            select(name='type')
+                                each type in ['INTEGER', 'REAL', 'TEXT', 'BLOB']
+                                    option(value=type selected=type === attribute.type)=type
+                        td
+                            select(name='notnull')
+                                each type in [0, 1]
+                                        option(value=type selected=attribute.notnull === type)=type
+                        td
+                            input(type='text' name='dflt_value' value=attribute.dflt_value)
+                        td
+                            input(type='radio' name='pk' value=1 checked=attribute.pk === 1)
+                        td
+                            input(type='checkbox' name='indexed' checked=attribute.indexed value="true")
+                        td
+                            input(type='checkbox' name='unique' checked=attribute.unique value="true")
                         td
                             a(href='/users/deleteColumn/' + attribute['cid']) delete
                             | 
-                            a(href='#' class='modifyColumn') modify
+                            a(href='#' data-action='/users/modifyColumn') modify
                 tr
                     td
                     td: input(type='text' name='name')
@@ -86,4 +88,6 @@ block content
                             option(value='1') 1
                     td: input(type='text' name='dflt_value')
                     td: input(type='radio' name='pk' value=1)
-                    td: a(href='#' class='addColumn') add
+                    td: input(type='checkbox' name='indexed' value="true")
+                    td: input(type='checkbox' name='unique' value="true")
+                    td: a(href='#' data-action='/users/addColumn') add

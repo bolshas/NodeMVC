@@ -9,12 +9,13 @@ $(document).ready(function() {
             }
         })
     })
-    $("a.modifyColumn").click(function(event) {
-        $(this).closest('tr').find('input, select, textarea').clone().appendTo($('form#modifyColumn'))
-        $('form#modifyColumn').submit()
-    })    
-    $("a.addColumn").click(function(event) {
-        $('form#addColumn').html($(this).closest('tr').find('input, select, textarea').clone())
-        $('form#addColumn').submit()
+    
+    $("a").click(function(event) {
+        if ($(this).data('action') !== undefined) {
+            event.preventDefault()
+            $('body').append($('<form action="' + $(this).data('action') + '" id="submitRowForm" method="post" style="display:none"></form>'))
+            $(this).closest('tr').find('input, select, textarea').clone().appendTo($('form#submitRowForm'))
+            $('form#submitRowForm').submit()
+        }
     })
 })

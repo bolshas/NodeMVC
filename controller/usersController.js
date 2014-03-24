@@ -11,7 +11,7 @@ module.exports = {
     create: function(data, callback) {
         var self = this
         User.create(undefined, function(){
-            return callback(undefined, function(){self.router.redirect('/users')})
+            return callback(undefined, function(){ self.router.redirect('/users') })
         })
     },
     
@@ -20,25 +20,33 @@ module.exports = {
 		var error
 		if (self.router.request.method === 'POST') {
             var user = self.router.request.postArgs
-            console.log(user)
-            if (user.name !== '' && user.email !== '') { // TODO: move validation to model
-                 User.add(user, function(error) {
-                    if (error)
-                        self.router.session.message = { type: 'error', text: 'the user could not be added' }
-                    else
-                        self.router.session.message = { type: 'success', text: 'the user was added successfully' }
-                    return callback(error, function(){self.router.redirect('/users')})
-                })
-            }
-            else {
-                error = new Error('Please fill out the form')
-                return callback(error, function(){self.router.redirect('/users')})
-            }
+             User.add(user, function(error) {
+                if (error)
+                    self.router.session.message = { type: 'error', text: 'the user could not be added' }
+                else
+                    self.router.session.message = { type: 'success', text: 'the user was added successfully' }
+                return callback(error, function(){ self.router.redirect('/users') })
+            })
 		}
         else {
             error = new Error('Please send a POST request')
             return callback(error, function(){self.router.redirect('/users')})
         }
+    },
+    
+    modify: function(data, callback) {
+        var self = this
+        var error
+		if (self.router.request.method === 'POST') {
+			var user = self.router.request.postArgs
+			User.modify(user, function(error) {
+				if (error)
+                    self.router.session.message = { type: 'error', text: 'the user could not be modified' }
+                else
+                    self.router.session.message = { type: 'success', text: 'the user was modified successfully' }
+                return callback(error, function(){ self.router.redirect('/users') })
+			})
+		}
     },
     
     delete: function(data, callback) {
@@ -63,9 +71,8 @@ module.exports = {
         self.render = false
         if (self.router.request.method === 'POST') {
             var column = self.router.request.postArgs
-            console.log(column)
-            User.addColumn(column, function(error){
-                return callback(error, function(){ self.router.redirect('/users') })
+            User.addColumn(column, function(error) {
+                return callback(error, function() { self.router.redirect('/users') })
             })
         }
         else
@@ -78,9 +85,8 @@ module.exports = {
         self.render = false
         if (self.router.request.method === 'POST') {
             var column  = self.router.request.postArgs
-            console.log(column)
-            User.modifyColumn(column, function(error){
-                return callback(error, function(){ self.router.redirect('/users') })
+            User.modifyColumn(column, function(error) {
+                return callback(error, function() { self.router.redirect('/users') })
             })
         }
         else
@@ -92,7 +98,7 @@ module.exports = {
         var error
         self.render = false
         User.deleteColumn(data[0], function(error) {
-            return callback(error, function(){ self.router.redirect('/users') })
+            return callback(error, function() { self.router.redirect('/users') })
         })
     },
     
@@ -103,10 +109,6 @@ module.exports = {
     },
     
     test: function(data, callback) {
-		var self = this
-		var result = ''
-		if (self.router.request.isXML)
-            result = 'XML'
-		return callback(undefined, function(){ self.router.render(result) })
+		return callback()
     }
 }

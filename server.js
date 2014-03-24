@@ -1,6 +1,6 @@
 var App = require('./lib/app')
 var app = new App()
-app.start()
+app.start(process.argv[2])
 
 process.on('uncaughtException', function(error) {
     console.log(error.stack)

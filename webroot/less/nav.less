@@ -1,4 +1,46 @@
 nav {
+    width: 800px;
+    margin: 0 auto;
+	ul {
+		margin: 0; padding: 0; border: 0;
+		li {
+		    float: left;
+			position: relative;
+			display: inline;
+			&:hover > ul { opacity: 1; visibility: visible; }
+			a {
+			    padding: 10px;
+				display: inline-block;
+				color: white;
+				&:hover { text-decoration: none; background: @black + 120;}
+			}
+			
+    		ul {
+    		    position: absolute;
+    		    opacity: 0; visibility: hidden;
+    		    box-shadow: 2px 2px 0 0 rgba(0,0,0,0.3);
+    		    li {
+    		        a {
+    		            width: 100px;
+    		            background: white;
+    		            border-bottom: 1px solid @black + 100;
+    		            border-left: 1px solid @black + 100;
+    		            border-right: 1px solid @black + 100;
+    		            
+    		            color: black;
+    		            &:hover { background: @white - 30;}
+    		        }
+    		        position: relative;
+    		        ul {
+    		            position: absolute; top: 0; left: 100%;
+    		        }
+    		    }
+	    	}
+		}
+	}
+}
+
+.nav {
 	margin: 20px 0;
 	display: block;
 	float: left;

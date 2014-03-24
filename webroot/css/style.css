@@ -7,11 +7,63 @@
   user-select: none;
 }
 nav {
+  width: 800px;
+  margin: 0 auto;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+nav ul li {
+  float: left;
+  position: relative;
+  display: inline;
+}
+nav ul li:hover > ul {
+  opacity: 1;
+  visibility: visible;
+}
+nav ul li a {
+  padding: 10px;
+  display: inline-block;
+  color: white;
+}
+nav ul li a:hover {
+  text-decoration: none;
+  background: #787878;
+}
+nav ul li ul {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.3);
+}
+nav ul li ul li {
+  position: relative;
+}
+nav ul li ul li a {
+  width: 100px;
+  background: white;
+  border-bottom: 1px solid #646464;
+  border-left: 1px solid #646464;
+  border-right: 1px solid #646464;
+  color: black;
+}
+nav ul li ul li a:hover {
+  background: #e1e1e1;
+}
+nav ul li ul li ul {
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+.nav {
   margin: 20px 0;
   display: block;
   float: left;
 }
-nav ul {
+.nav ul {
   margin: 0;
   padding: 0;
   background-color: #828282;
@@ -24,7 +76,7 @@ nav ul {
   -webkit-border-radius: 3px;
   float: left;
 }
-nav ul li {
+.nav ul li {
   position: relative;
   width: 158px;
   border-style: solid;
@@ -34,20 +86,20 @@ nav ul li {
   float: left;
   text-align: center;
 }
-nav ul li:first-child {
+.nav ul li:first-child {
   border-left: none;
 }
-nav ul li:last-child {
+.nav ul li:last-child {
   border-right: none;
 }
-nav ul li:hover {
+.nav ul li:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
-nav ul li:hover > ul {
+.nav ul li:hover > ul {
   opacity: 1;
   visibility: visible;
 }
-nav ul li a {
+.nav ul li a {
   font-family: 'Exo 2', sans-serif;
   font-weight: 700;
   text-decoration: none;
@@ -56,10 +108,10 @@ nav ul li a {
   display: block;
   padding: 10px 0;
 }
-nav ul li a:hover {
+.nav ul li a:hover {
   text-decoration: none;
 }
-nav ul li ul {
+.nav ul li ul {
   width: 100%;
   display: block;
   opacity: 0;
@@ -71,7 +123,7 @@ nav ul li ul {
   border-radius: 0 0 3px 3px;
   border-color: #282828;
 }
-nav ul li ul li {
+.nav ul li ul li {
   width: 100%;
   position: relative;
   display: block;
@@ -81,20 +133,20 @@ nav ul li ul li {
   border-color: rgba(255, 255, 255, 0.1) transparent rgba(0, 0, 0, 0.1) transparent;
   text-align: left;
 }
-nav ul li ul li:first-child {
+.nav ul li ul li:first-child {
   border-width: 1px 0 1px 0;
 }
-nav ul li ul li:last-child {
+.nav ul li ul li:last-child {
   border-width: 1px 0 0 0;
 }
-nav ul li ul li:hover {
+.nav ul li ul li:hover {
   background-color: #282828;
 }
-nav ul li ul li a {
+.nav ul li ul li a {
   font-weight: 400;
   padding-left: 10px;
 }
-nav ul li ul li ul {
+.nav ul li ul li ul {
   width: 100%;
   position: absolute;
   top: -2px;
@@ -106,56 +158,49 @@ nav ul li ul li ul {
   src: url('../fonts/glyphicons-halflings-regular.eot');
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
-table input[type=text] {
-  width: 100%;
-  height: auto;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: none;
-  box-shadow: none;
-  box-sizing: border-box;
-}
-table input[type=text]:focus {
-  background: none;
-  border: 0;
-}
-table input[type=text]:hover {
-  border: 0;
-}
-table input[type=submit] {
-  height: auto;
-  margin: 0;
-}
 .form-container {
   background-color: rgba(255, 255, 255, 0.5);
   padding: 10px;
   border-radius: 3px;
 }
-label {
+label,
+select,
+input,
+textarea {
   font-family: 'Exo 2', sans-serif;
-  font-weight: 700;
   font-size: 14px;
-  line-height: 42px;
+  padding: 0 10px;
+  height: 30px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+label {
+  font-weight: 700;
   width: 100px;
   display: block;
   float: left;
 }
+input[type=text],
+select,
+textarea {
+  border: 1px solid #b9b9b9;
+  outline: 0;
+  background: #ffffff;
+  color: #464646;
+  box-shadow: 0 1px 0 0 #ffffff, 0 1px 3px 0 rgba(0, 0, 0, 0.2) inset;
+}
+input[type=text]:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 1px rgba(46, 126, 207, 0.7), 0 1px 3px 0 rgba(0, 0, 0, 0.2) inset;
+}
 input[type=button],
 input[type=submit] {
-  font-family: 'Exo 2', sans-serif;
   font-weight: 600;
-  font-size: 14px;
-  padding: 0 10px;
-  height: 40px;
-  line-height: auto;
   color: white;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   border: 1px solid #2e7ecf;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
   outline: 0;
   -webkit-box-shadow: "0 1px 0 0 @themeBlue + 80 inset, 0 0 3px 0 rgba(0, 0, 0, 0.4)";
   -moz-box-shadow: "0 1px 0 0 @themeBlue + 80 inset, 0 0 3px 0 rgba(0, 0, 0, 0.4)";
@@ -176,79 +221,6 @@ input[type=submit]:active {
   -webkit-box-shadow: "0 0 3px 0 rgba(0, 0, 0, 0.4)";
   -moz-box-shadow: "0 0 3px 0 rgba(0, 0, 0, 0.4)";
   box-shadow: "0 0 3px 0 rgba(0, 0, 0, 0.4)";
-}
-input[type=text] {
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border: 1px solid #9b9b9b;
-  outline: 0;
-  background: #f0f0f0;
-  font-family: 'Exo 2', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  padding: 0 10px;
-  height: 40px;
-  line-height: auto;
-  color: #464646;
-  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 0 3px 0 rgba(0, 0, 0, 0.3) inset;
-}
-input[type=text]:focus {
-  background: #ffffff;
-  border: 1px solid #646464;
-}
-input[type=text]:hover {
-  border: 1px solid #828282;
-}
-input[type=checkbox] {
-  opacity: 0;
-}
-input[type=checkbox] + label {
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  font-family: 'Exo 2', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  color: #464646;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-input[type=checkbox] + label:after {
-  position: absolute;
-  top: 0;
-  left: -20px;
-  border: 1px solid #9b9b9b;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  outline: 0;
-  background: #fafafa;
-  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 0 3px 0 rgba(0, 0, 0, 0.3) inset;
-  font-family: 'Glyphicons Halflings';
-  font-size: 12px;
-  width: 14px;
-  height: 8px;
-  padding-left: 1px;
-  padding-top: 7px;
-  display: inline-block;
-  content: '';
-  color: #578637;
-  line-height: 0;
-}
-input[type=checkbox]:hover + label:after {
-  border-color: #828282;
-}
-input[type=checkbox]:focus + label:after {
-  background: #ffffff;
-  border-color: #646464;
-}
-input[type=checkbox]:checked + label:after {
-  content: '\e013';
 }
 h1,
 h2 {
@@ -296,20 +268,26 @@ pre {
   margin: 0;
 }
 body {
-  background-color: #ccc;
+  background-color: white;
   margin: 0;
   padding: 0px;
 }
+.top {
+  width: 100%;
+  height: 60px;
+  background-color: #323232;
+}
+.top2 {
+  width: 100%;
+  height: auto;
+  background-color: #646464;
+  float: left;
+}
 .container {
   width: 800px;
-  padding: 15px;
-  margin: 0 auto;
-  margin-top: 60px;
-  background-color: #e1e1e1;
-  border-style: solid;
-  border-color: #f0f0f0;
-  border-width: 15px;
-  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+  margin: 60px auto 0 auto;
+  background-color: #ffffff;
+  border: 0;
 }
 table {
   margin: 20px auto;
@@ -320,16 +298,15 @@ table {
   width: 100%;
 }
 table thead tr {
-  border: 1px solid #6e6e6e;
   border-radius: 5px 5px 0 0;
   text-shadow: 0 1px rgba(0, 0, 0, 0.5);
   color: #ffffff;
   font-weight: 700;
 }
 table thead tr th {
+  height: 30px;
   background: linear-gradient(#a0a0a0 0%, #828282 50%, #828282 51%, #8c8c8c 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#a0a0a0, endColorstr=#8c8c8c);
-  box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.3) inset;
   border-style: solid;
   border-width: 0 1px 0 1px;
   border-color: transparent rgba(0, 0, 0, 0.2) transparent rgba(255, 255, 255, 0.2);
@@ -342,6 +319,9 @@ table thead tr th:last-child {
   border-right: 0;
   border-radius: 0 5px 0 0;
 }
+table tbody tr td {
+  border-bottom: 1px solid #d4e4f5;
+}
 table tbody tr:nth-child(odd) {
   background: #ffffff;
 }
@@ -351,4 +331,15 @@ table tbody tr:nth-child(even) {
 table td,
 table th {
   padding: 5px 10px;
+}
+.table {
+  display: table;
+  width: 100%;
+}
+.table .row {
+  display: table-row;
+}
+.table .row .column {
+  border: 1px solid black;
+  display: table-cell;
 }
