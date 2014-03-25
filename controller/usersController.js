@@ -25,6 +25,7 @@ module.exports = {
                     self.router.session.message = { type: 'error', text: 'the user could not be added' }
                 else
                     self.router.session.message = { type: 'success', text: 'the user was added successfully' }
+                
                 return callback(error, function(){ self.router.redirect('/users') })
             })
 		}

@@ -1,3 +1,44 @@
+@font-face {
+  font-family: 'Exo 2';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Exo-2/Exo2.0-Regular-webfont.eot');
+  src: url('../fonts/Exo-2/Exo2.0-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Exo-2/Exo2.0-Regular-webfont.woff') format('woff'), url('../fonts/Exo-2/Exo2.0-Regular-webfont.ttf') format('truetype'), url('../fonts/Exo-2/Exo2.0-Regular-webfont.svg#exo_2.0regular') format('svg');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/Exo-2/Exo2.0-SemiBold-webfont.eot');
+  src: url('../fonts/Exo-2/Exo2.0-SemiBold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Exo-2/Exo2.0-SemiBold-webfont.woff') format('woff'), url('../fonts/Exo-2/Exo2.0-SemiBold-webfont.ttf') format('truetype'), url('../fonts/Exo-2/Exo2.0-SemiBold-webfont.svg#exo_2.0semi_bold') format('svg');
+}
+@font-face {
+  font-family: 'Exo 2';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/Exo-2/Exo2.0-Bold-webfont.eot');
+  src: url('../fonts/Exo-2/Exo2.0-Bold-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/Exo-2/Exo2.0-Bold-webfont.woff') format('woff'), url('../fonts/Exo-2/Exo2.0-Bold-webfont.ttf') format('truetype'), url('../fonts/Exo-2/Exo2.0-Bold-webfont.svg#exo_2.0bold') format('svg');
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  @font-face {
+    font-family: 'Exo 2';
+    font-weight: 400;
+    font-style: normal;
+    src: url('../fonts/Exo-2/Exo2.0-Regular-webfont.svg#exo_2.0regular') format('svg');
+  }
+  @font-face {
+    font-family: 'Exo 2';
+    font-weight: 600;
+    font-style: normal;
+    src: url('../fonts/Exo-2/Exo2.0-SemiBold-webfont.svg#exo_2.0semi_bold') format('svg');
+  }
+  @font-face {
+    font-family: 'Exo 2';
+    font-weight: 700;
+    font-style: normal;
+    src: url('../fonts/Exo-2/Exo2.0-Bold-webfont.svg#exo_2.0bold') format('svg');
+  }
+}
 .untouchable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -228,6 +269,7 @@ h2 {
   font-weight: 600;
   color: #646464;
   text-shadow: 0 1px 0 #f5f5f5;
+  font-smooth: always;
 }
 h2 {
   font-size: 16px;
